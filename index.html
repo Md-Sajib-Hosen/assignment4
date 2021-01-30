@@ -87,16 +87,16 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$</p>
+                        <p id="vat10">$</p>
                     </div>
                 </div>
                 <hr>
                 <div class="amount">
                     <div class="left">
-                        <h4>Total</h4>
+                        <h4>Grand Total</h4>
                     </div>
                     <div class="right">
-                        <p>$</p>
+                        <p id="grandTotal">$</p>
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
 
         <div class="booking-content">
             <h1>discover <br> around the world</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias
+            <p>Lorem ipsum dolor sit   adipisicingelit. Provident voluptatibus quam fuga laborumalias
                 veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise
                 voluptatibus quam</p>
         </div>
@@ -114,24 +114,18 @@
 
         <script>
 
+
             // eventlistener for firstClass Ticket
 
                 document.getElementById('case-increase').addEventListener('click',function(){
                     const caseInput=document.getElementById('case-count');
                     const caseCount=parseInt(caseInput.value);
 
-                    
-                  console.log(caseCount);
                     const caseNewCount=caseCount + 1;
                     
                     caseInput.value= caseNewCount;
 
-                    
-                    const firstClassTicketTotal1=caseNewCount*150;
-                
-                    document.getElementById('subtotal').innerHTML='$'+ firstClassTicketTotal1;
-
-
+                    ticketTotal()
                 
                 })
 
@@ -141,18 +135,15 @@
                     const caseInput=document.getElementById('case-count');
                     const caseCount=parseInt(caseInput.value);
                     
-                    
-                    if(caseInput.value > 0){
+                    if(caseCount > 0){
                         const caseNewCount= caseCount -1;
                         caseInput.value = caseNewCount;
-                        const firstClassTicketTotal2=caseNewCount*150;
-                      document.getElementById('subtotal').innerHTML='$'+ firstClassTicketTotal2;
-                        
+
+                    ticketTotal()
                     }
                 
                 })
                 
-
 
             // adding EventListner For EconmyClassTicket
 
@@ -160,19 +151,12 @@
                     const caseInputEconomy=document.getElementById('case-count-economy');
                     const caseCountEconomy=parseInt(caseInputEconomy.value);
 
-                    
-                  console.log(caseCountEconomy);
                     const caseNewCount=caseCountEconomy + 1;
                     
                     caseInputEconomy.value= caseNewCount;
-
                     
-                    const economyTicketTotal1=caseNewCount*100;
-                    document.getElementById('subtotal').innerHTML='$'+ economyTicketTotal1;
+                    ticketTotal()
                     
-
-
-                
                 })
 
                 document.getElementById('case-decrease-economy').addEventListener('click',function(){
@@ -180,24 +164,39 @@
                 const caseInputEconomy=document.getElementById('case-count-economy');
                 const caseCountEconomy=parseInt(caseInputEconomy.value);
                 
-                
-                if(caseInputEconomy.value > 0){
+                if(caseCountEconomy > 0){
                     const caseNewCount= caseCountEconomy -1;
                     caseInputEconomy.value = caseNewCount;
-                    const economyTicketTotal2=caseNewCount*100;
-                document.getElementById('subtotal').innerHTML='$'+ economyTicketTotal2;
-                    
+
+                    ticketTotal()              
                 }
             
             })
 
-            
 
+            function ticketTotal(){
+                caseInput = document.getElementById('case-count').value;
+                caseInputEconomy=document.getElementById('case-count-economy').value
+                
+                const firstClassTicketTotal1=caseInput*150;
+                const economyTicketTotal1=caseInputEconomy*100;
+
+                const totalSum = firstClassTicketTotal1 + economyTicketTotal1;
+
+                const vat10 = (totalSum/100)*10;
+
+                const grandTotal = totalSum + vat10;
+
+                document.getElementById('subtotal').innerHTML='$'+ totalSum;
+                document.getElementById('vat10').innerHTML='$'+ vat10;
+                document.getElementById('grandTotal').innerHTML='$'+ grandTotal;
+                
+            }
+         
 
         </script>
 
-        </section>
-
+      
 
 
 
