@@ -27,7 +27,7 @@
     </header>
 
     <!--Booking Section-->
-    <main class="main-content container">
+    <main id="booking-area" class="main-content container">
         <div class="booking-form">
             <h3>Booking Flights</h3>
             <div class="input-group">
@@ -58,7 +58,7 @@
                     <button id="case-increase" class="btn-style"> + </button>
 
                     <button id="case-decrease" class="btn-style"> - </button>
-                
+
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
                     <input id="case-count-economy" class="inp-style inp-width" type="number" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button id="case-increase-economy" class="btn-style" >+</button>
+                    <button id="case-increase-economy" class="btn-style">+</button>
                     <button id="case-decrease-economy" class="btn-style">-</button>
                 </div>
             </div>
@@ -100,108 +100,117 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="book-now" class="btn-style">Book Now</button>
         </div>
 
         <div class="booking-content">
             <h1>discover <br> around the world</h1>
-            <p>Lorem ipsum dolor sit   adipisicingelit. Provident voluptatibus quam fuga laborumalias
+            <p>Lorem ipsum dolor sit adipisicingelit. Provident voluptatibus quam fuga laborumalias
                 veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise
                 voluptatibus quam</p>
         </div>
 
 
+    </main>
 
-        <script>
-
-
-            // eventlistener for firstClass Ticket
-
-                document.getElementById('case-increase').addEventListener('click',function(){
-                    const caseInput=document.getElementById('case-count');
-                    const caseCount=parseInt(caseInput.value);
-
-                    const caseNewCount=caseCount + 1;
-                    
-                    caseInput.value= caseNewCount;
-
-                    ticketTotal()
-                
-                })
+    <script>
 
 
-                document.getElementById('case-decrease').addEventListener('click',function(){
-                
-                    const caseInput=document.getElementById('case-count');
-                    const caseCount=parseInt(caseInput.value);
-                    
-                    if(caseCount > 0){
-                        const caseNewCount= caseCount -1;
-                        caseInput.value = caseNewCount;
+        // eventlistener for firstClass Ticket
 
-                    ticketTotal()
-                    }
-                
-                })
-                
+        document.getElementById('case-increase').addEventListener('click', function () {
+            const caseInput = document.getElementById('case-count');
+            const caseCount = parseInt(caseInput.value);
 
-            // adding EventListner For EconmyClassTicket
+            const caseNewCount = caseCount + 1;
 
-            document.getElementById('case-increase-economy').addEventListener('click',function(){
-                    const caseInputEconomy=document.getElementById('case-count-economy');
-                    const caseCountEconomy=parseInt(caseInputEconomy.value);
+            caseInput.value = caseNewCount;
 
-                    const caseNewCount=caseCountEconomy + 1;
-                    
-                    caseInputEconomy.value= caseNewCount;
-                    
-                    ticketTotal()
-                    
-                })
+            ticketTotal()
 
-                document.getElementById('case-decrease-economy').addEventListener('click',function(){
-                
-                const caseInputEconomy=document.getElementById('case-count-economy');
-                const caseCountEconomy=parseInt(caseInputEconomy.value);
-                
-                if(caseCountEconomy > 0){
-                    const caseNewCount= caseCountEconomy -1;
-                    caseInputEconomy.value = caseNewCount;
-
-                    ticketTotal()              
-                }
-            
-            })
+        })
 
 
-            function ticketTotal(){
-                caseInput = document.getElementById('case-count').value;
-                caseInputEconomy=document.getElementById('case-count-economy').value
-                
-                const firstClassTicketTotal1=caseInput*150;
-                const economyTicketTotal1=caseInputEconomy*100;
+        document.getElementById('case-decrease').addEventListener('click', function () {
 
-                const totalSum = firstClassTicketTotal1 + economyTicketTotal1;
+            const caseInput = document.getElementById('case-count');
+            const caseCount = parseInt(caseInput.value);
 
-                const vat10 = (totalSum/100)*10;
+            if (caseCount > 0) {
+                const caseNewCount = caseCount - 1;
+                caseInput.value = caseNewCount;
 
-                const grandTotal = totalSum + vat10;
-
-                document.getElementById('subtotal').innerHTML='$'+ totalSum;
-                document.getElementById('vat10').innerHTML='$'+ vat10;
-                document.getElementById('grandTotal').innerHTML='$'+ grandTotal;
-                
+                ticketTotal()
             }
-         
 
-        </script>
-
-      
+        })
 
 
+        // adding EventListner For EconmyClassTicket
+
+        document.getElementById('case-increase-economy').addEventListener('click', function () {
+            const caseInputEconomy = document.getElementById('case-count-economy');
+            const caseCountEconomy = parseInt(caseInputEconomy.value);
+
+            const caseNewCount = caseCountEconomy + 1;
+
+            caseInputEconomy.value = caseNewCount;
+
+            ticketTotal()
+
+        })
+
+        document.getElementById('case-decrease-economy').addEventListener('click', function () {
+
+            const caseInputEconomy = document.getElementById('case-count-economy');
+            const caseCountEconomy = parseInt(caseInputEconomy.value);
+
+            if (caseCountEconomy > 0) {
+                const caseNewCount = caseCountEconomy - 1;
+                caseInputEconomy.value = caseNewCount;
+
+                ticketTotal()
+            }
+
+        })
 
 
-        <!--Thank You-->
+        function ticketTotal() {
+            caseInput = document.getElementById('case-count').value;
+            caseInputEconomy = document.getElementById('case-count-economy').value
+
+            const firstClassTicketTotal1 = caseInput * 150;
+            const economyTicketTotal1 = caseInputEconomy * 100;
+
+            const totalSum = firstClassTicketTotal1 + economyTicketTotal1;
+
+            const vat10 = (totalSum / 100) * 10;
+
+            const grandTotal = totalSum + vat10;
+
+            document.getElementById('subtotal').innerHTML = '$' + totalSum;
+            document.getElementById('vat10').innerHTML = '$' + vat10;
+            document.getElementById('grandTotal').innerHTML = '$' + grandTotal;
+
+        }
+
+
+
+        // for bonous- i have just  show a alert as a beginner web dev
+
+        const bookingButton = document.getElementById('book-now');
+        bookingButton.addEventListener("click", function () {
+            console.log(alert('You Have Successfully Purchase Your Ticket!Thanks!'))
+        })
+
+    </script>
+
+
+
+
+
+
+    <!--Thank You-->
 </body>
 
 </html>
