@@ -41,7 +41,7 @@
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                        <input class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
@@ -51,20 +51,25 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input id="case-count" class="inp-style inp-width" type="number" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p>+ -</p>
+
+                    <button id="case-increase" class="btn-style"> + </button>
+
+                    <button id="case-decrease" class="btn-style"> - </button>
+                
                 </div>
             </div>
-            
+
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input id="case-count-economy" class="inp-style inp-width" type="number" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span>+</span> <span>-</span> </p>
+                    <button id="case-increase-economy" class="btn-style" >+</button>
+                    <button id="case-decrease-economy" class="btn-style">-</button>
                 </div>
             </div>
             <div class="calculations">
@@ -73,7 +78,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p id="subtotal">$</p>
                     </div>
                 </div>
 
@@ -82,7 +87,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p>$</p>
                     </div>
                 </div>
                 <hr>
@@ -91,7 +96,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p>$</p>
                     </div>
                 </div>
             </div>
@@ -100,11 +105,104 @@
 
         <div class="booking-content">
             <h1>discover <br> around the world</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias
+                veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise
+                voluptatibus quam</p>
         </div>
-    </section>
 
-    <!--Thank You-->
+
+
+        <script>
+
+            // eventlistener for firstClass Ticket
+
+                document.getElementById('case-increase').addEventListener('click',function(){
+                    const caseInput=document.getElementById('case-count');
+                    const caseCount=parseInt(caseInput.value);
+
+                    
+                  console.log(caseCount);
+                    const caseNewCount=caseCount + 1;
+                    
+                    caseInput.value= caseNewCount;
+
+                    
+                    const firstClassTicketTotal1=caseNewCount*150;
+                
+                    document.getElementById('subtotal').innerHTML='$'+ firstClassTicketTotal1;
+
+
+                
+                })
+
+
+                document.getElementById('case-decrease').addEventListener('click',function(){
+                
+                    const caseInput=document.getElementById('case-count');
+                    const caseCount=parseInt(caseInput.value);
+                    
+                    
+                    if(caseInput.value > 0){
+                        const caseNewCount= caseCount -1;
+                        caseInput.value = caseNewCount;
+                        const firstClassTicketTotal2=caseNewCount*150;
+                      document.getElementById('subtotal').innerHTML='$'+ firstClassTicketTotal2;
+                        
+                    }
+                
+                })
+                
+
+
+            // adding EventListner For EconmyClassTicket
+
+            document.getElementById('case-increase-economy').addEventListener('click',function(){
+                    const caseInputEconomy=document.getElementById('case-count-economy');
+                    const caseCountEconomy=parseInt(caseInputEconomy.value);
+
+                    
+                  console.log(caseCountEconomy);
+                    const caseNewCount=caseCountEconomy + 1;
+                    
+                    caseInputEconomy.value= caseNewCount;
+
+                    
+                    const economyTicketTotal1=caseNewCount*100;
+                    document.getElementById('subtotal').innerHTML='$'+ economyTicketTotal1;
+                    
+
+
+                
+                })
+
+                document.getElementById('case-decrease-economy').addEventListener('click',function(){
+                
+                const caseInputEconomy=document.getElementById('case-count-economy');
+                const caseCountEconomy=parseInt(caseInputEconomy.value);
+                
+                
+                if(caseInputEconomy.value > 0){
+                    const caseNewCount= caseCountEconomy -1;
+                    caseInputEconomy.value = caseNewCount;
+                    const economyTicketTotal2=caseNewCount*100;
+                document.getElementById('subtotal').innerHTML='$'+ economyTicketTotal2;
+                    
+                }
+            
+            })
+
+            
+
+
+        </script>
+
+        </section>
+
+
+
+
+
+        <!--Thank You-->
 </body>
 
 </html>
